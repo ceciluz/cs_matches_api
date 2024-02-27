@@ -5,8 +5,8 @@ class CreateMatches < ActiveRecord::Migration[6.1]
     create_table :matches do |t|
       t.integer :team_home_score, null: false
       t.integer :team_away_score, null: false
-      t.references :home_team, null: false, home_team: { to_table: :teams }, index: true
-      t.references :away_team, null: false, home_team: { to_table: :teams }, index: true
+      t.references :team_home, null: false, foreign_key: { to_table: :teams}
+      t.references :team_away, null: false, foreign_key: { to_table: :teams}
       t.timestamps
     end
   end

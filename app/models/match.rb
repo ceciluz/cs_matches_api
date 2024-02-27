@@ -5,6 +5,6 @@ class Match < ApplicationRecord
   validates :team_away_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :players_performances, class_name: 'PlayerPerformance', dependent: :destroy
-  belongs_to :home_team, class_name: 'Team', inverse_of: :matches_as_home_team
-  belongs_to :away_team, class_name: 'Team', inverse_of: :matches_as_away_team
+  belongs_to :team_home, class_name: 'Team', inverse_of: :matches_as_home_team
+  belongs_to :team_away, class_name: 'Team', inverse_of: :matches_as_away_team
 end
