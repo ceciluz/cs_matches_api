@@ -4,6 +4,6 @@ FactoryBot.define do
     nickname { "MyString" }
     nationality { "MyString" }
     birth_date { "2024-02-26" }
-    team { nil }
+    team { 'abc' }
   end
 end
