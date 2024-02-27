@@ -7,8 +7,8 @@ RSpec.describe Match, type: :model do
 
   describe 'Associations' do
     it { is_expected.to have_many(:players_performances) }
-    it { is_expected.to belong_to(:home_team) }
-    it { is_expected.to belong_to(:away_team) }
+    it { is_expected.to belong_to(:team_home) }
+    it { is_expected.to belong_to(:team_away) }
   end
 
   describe 'Validations' do
