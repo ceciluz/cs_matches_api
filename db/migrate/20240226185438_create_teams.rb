@@ -1,9 +1,9 @@
 class CreateTeams < ActiveRecord::Migration[6.1]
   def change
     create_table :teams do |t|
-      t.string :name
-      t.string :country
-      t.string :region
+      t.string :name, null:false
+      t.string :country, null:false
+      t.string :region, null:false
 
       t.timestamps
     end

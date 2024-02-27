@@ -5,8 +5,8 @@ RSpec.describe Team, type: :model do
 
   describe 'Associations' do
     it {is_expected.to have_many(:players)}
-    it {is_expected.to have_many(:matches_as_away)}
-    it {is_expected.to have_many(:matches_as_home)}
+    it {is_expected.to have_many(:matches_as_home_team)}
+    it {is_expected.to have_many(:matches_as_away_team)}
   end
 
   describe 'Validations' do
