@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-core'
   gem 'rspec-rails'
+  gem 'rswag'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false, group: :test
