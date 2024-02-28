@@ -25,8 +25,8 @@ class PlayersController < ApplicationController
 
   def index
     players = Player.all
-    render json: @player.as_json(include: { team: { only: [:id, :name, :country, :region] }, performances: { only: [:kills, :deaths, :assists, :headshots] } }, except: [:team_id])
-  end
+    render json: players.as_json(include: { team: { only: [:id, :name, :country, :region] }, performances: { only: [:kills, :deaths, :assists, :headshots] } }, except: [:team_id])
+   end
 
   def show
     @player = Player.find(params[:id])
