@@ -7,6 +7,6 @@ FactoryBot.define do
     deaths { Faker::Number.between(from: 0, to: 30) }
     headshots { Faker::Number.between(from: 0, to: 100) }
     player
-    match
+    match factory: :match
   end
 end

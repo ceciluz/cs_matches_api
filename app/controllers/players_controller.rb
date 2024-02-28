@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:update, :destroy, :show]
+  before_action :set_player, only: %i[update destroy show]
 
   def create
     @player = Player.new(player_params)
@@ -25,12 +25,10 @@ class PlayersController < ApplicationController
 
   def index
     @players = Player.all
-    #render json: players.as_json(include: { team: { only: [:id, :name, :country, :region] }, performances: { only: [:kills, :deaths, :assists, :headshots] } }, except: [:team_id])
-   end
+  end
 
   def show
     @player = Player.find(params[:id])
-    render json: @player.as_json(include: { team: { only: [:id, :name, :country, :region] }, performances: { only: [:kills, :deaths, :assists, :headshots] } }, except: [:team_id])
   end
 
   def player_params
@@ -40,5 +38,4 @@ class PlayersController < ApplicationController
   def set_player
     @player = Player.find(params[:id])
   end
-
 end

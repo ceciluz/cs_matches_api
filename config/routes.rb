@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get 'players/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :matches, only: [:create]
-  resources :players, only: [:create, :update, :destroy, :index, :show]
+  resources :players, only: %i[create update destroy index show]
 end

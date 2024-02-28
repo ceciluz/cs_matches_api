@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if @match.save
-      render  @match, status: :created
+      render @match, status: :created
     else
       render @match.errors, status: :unprocessable_entity
     end
