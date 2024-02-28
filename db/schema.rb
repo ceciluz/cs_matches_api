@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_240_226_192_508) do
-  create_table 'matches', force: :cascade do |t|
-    t.integer 'team_home_score', null: false
-    t.integer 'team_away_score', null: false
-    t.integer 'home_team_id', null: false
-    t.integer 'away_team_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['away_team_id'], name: 'index_matches_on_away_team_id'
-    t.index ['home_team_id'], name: 'index_matches_on_home_team_id'
+ActiveRecord::Schema.define(version: 2024_02_26_192508) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "team_home_score", null: false
+    t.integer "team_away_score", null: false
+    t.integer "team_home_id", null: false
+    t.integer "team_away_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_away_id"], name: "index_matches_on_team_away_id"
+    t.index ["team_home_id"], name: "index_matches_on_team_home_id"
   end
 
   create_table "player_performances", force: :cascade do |t|
@@ -53,4 +54,10 @@ ActiveRecord::Schema.define(version: 20_240_226_192_508) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+<<<<<<<<< Temporary merge branch 1
+  add_foreign_key 'matches', 'teams', column: 'team_away_id'
+  add_foreign_key 'matches', 'teams', column: 'team_home_id'
+=========
+>>>>>>>>> Temporary merge branch 2
 end

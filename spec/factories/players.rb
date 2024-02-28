@@ -6,8 +6,12 @@ FactoryBot.define do
     nickname { 'MyString' }
     nationality { 'MyString' }
     birth_date { '2004-02-26' }
-    team_id { 1 }
+    team factory: :team
 
-    association :team
+    trait :with_player_performances do
+      after(:create) do |player|
+        create_list(:player_performance, 3, player: player)
+      end
+    end
   end
 end
