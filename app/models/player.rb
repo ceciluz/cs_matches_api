@@ -10,7 +10,7 @@ class Player < ApplicationRecord
   validates :age, presence:true
   validate :minimum_age
 
-  has_many :performances, class_name: 'PlayerPerformance', dependent: :destroy
+  has_many :player_performances, class_name: 'PlayerPerformance', dependent: :destroy
 
   def minimum_age
     return unless birth_date.present? && birth_date > 18.years.ago.to_date
