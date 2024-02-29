@@ -24,11 +24,11 @@ class TeamsController < ApplicationController
   end
 
   def index
-    @teams = Teams.all
+    @teams = Team.all
   end
 
   def show
-    @team = Teams.find(params[:id])
+    @team = Team.find(params[:id])
   end
 
   private
