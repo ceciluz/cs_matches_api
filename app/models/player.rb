@@ -7,7 +7,7 @@ class Player < ApplicationRecord
   validates :nickname, presence: true
   validates :nationality, presence: true
   validates :birth_date, presence: true
-  validates :age, presence:true
+  validates :age, presence: true
   validate :minimum_age
 
   has_many :performances, class_name: 'PlayerPerformance', dependent: :destroy
@@ -20,6 +20,6 @@ class Player < ApplicationRecord
 
   def age
     now = Time.now.utc.to_date
-    now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
+    now.year - birth_date.year - (now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day) ? 0 : 1)
   end
 end

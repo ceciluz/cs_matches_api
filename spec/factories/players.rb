@@ -10,7 +10,7 @@ FactoryBot.define do
 
     trait :with_player_performances do
       after(:create) do |player|
-        create_list(:player_performance, 3, player: player)
+        create_list(:player_performance, 3, player:)
       end
     end
   end
