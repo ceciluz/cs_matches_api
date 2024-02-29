@@ -1,45 +1,35 @@
+# frozen_string_literal: true
 
+require 'rails_helper'
 require 'swagger_helper'
 
-describe 'Matches API' do
+RSpec.describe 'Counter Strike API', type: :request do
   path '/matches' do
     post 'Creates a match' do
       tags 'Matches'
       consumes 'application/json'
-      parameter name: :match, in: :body, schema: {
-        type: :object,
-        properties: {
-          team_home_score: { type: :integer },
-          team_away_score: { type: :integer },
-          team_home_id: { type: :integer },
-          team_away_id: { type: :integer },
-          player_performances_attributes: {
-            type: :array,
-            items: {
-              type: :object,
-              properties: {
-                player_id: { type: :integer },
-                kills: { type: :integer },
-                assists: { type: :integer },
-                deaths: { type: :integer },
-                headshots: { type: :integer }
-              },
-              required: [ 'player_id', 'kills', 'assists', 'deaths', 'headshots' ]
-            }
-          }
-        },
-        required: [ 'team_home_score', 'team_away_score', 'team_home_id', 'team_away_id', 'player_performances_attributes' ]
-      }
+      produces 'application/json'
+      description 'Create a match betwwne two teams'
+      parameter name: :match, in: :body, schema: { '$ref' => '#/components/schemas/match' }
 
-      response '201', 'match created' do
-        let(:match) { { team_home_score: 2, team_away_score: 1, team_home_id: 1, team_away_id: 2,
-        player_performances_attributes:
-        [{ player_id: 1, kills: 5, assists: 2, deaths: 1, headshots: 3 }] } }
+      response 201, 'Created' do
+        let(:team_home) { create(:team, id: 1) }
+        let(:team_away) { create(:team, id: 2) }
+        let(:player) { create(:player, id: 1) }
+        let(:player_performances) { create_list(:player_performance, 5, player:) }
+        let(:match) { build(:match, team_home:, team_away:, player_performances:) }
         run_test!
-        post '/matches', params: { match: match }, as: :json
       end
-      response '422', 'invalid request' do
-        let(:match) { { team_home_score: 'invalid' } }
+      response '422', 'Unprocessable Entity' do
+        let(:team_home) { create(:team, id: 1) }
+        let(:team_away) { create(:team, id: 2) }
+        let(:player) { create(:player, id: 1) }
+        let(:player_performances) { create_list(:player_performance, 5, player:) }
+        let(:invalid_match) do
+          { team_home_id: nil, team_away_id: nil, team_home_score: nil, team_away_score: nil,
+            player_performances_attributes: [] }
+        end
+        let(:match) { invalid_match }
         run_test!
       end
     end

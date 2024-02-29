@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'rswag'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -32,11 +32,9 @@ group :development, :test do
   gem 'capybara', '>= 3.26'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec'
   gem 'rspec-core'
-  gem 'rspec-rails'
-  gem 'rswag'
+  gem 'rspec-rails', '~> 6.1.0'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false, group: :test
