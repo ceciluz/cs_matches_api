@@ -37,5 +37,7 @@ class PlayersController < ApplicationController
 
   def set_player
     @player = Player.find(params[:id])
+  rescue StandardError => e
+    return render json: {error: e}, status: :not_found
   end
 end

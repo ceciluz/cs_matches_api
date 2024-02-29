@@ -55,11 +55,46 @@ RSpec.configure do |config|
                 }
               }
             }
-          }
+          },
+          player_params: {
+            type: :object,
+            properties: {
+              name: { type: :string, example: 'Name'},
+              nickname: { type: :string, example: 'Nickname'},
+              nationality: { type: :string, example: 'Nationality'},
+              birth_date: { type: :string, format: 'date', example: '2001-01-01'},
+              team_id: { type: :integer, example: 1},
+            }
+          },
+
+          player_response: {
+            type: :object,
+            properties: {
+              id: { type: :integer, example: 1 },
+              name: { type: :string, example: 'Player Name' },
+              nickname: { type: :string, example: 'Player Nickname' },
+              nationality: { type: :string, example: 'Brazilian' },
+              birth_date: { type: :string, format: 'date', example: '2006-01-01'},
+              age: { type: :integer, example: 18 },
+              team: {
+                type: :object,
+                properties: {
+                  id: { type: :integer, example: 1 },
+                  name: { type: :string, example: 'Team Name' },
+                  country: { type: :string, example: 'Brasil' },
+                  region: { type: :string, example: 'South America' },
+                }
+              }
+            }
+          },
+
+
+
         }
       }
     }
   }
+
 
   # Specify the format of the output Swagger file when running 'rswag:specs:swaggerize'.
   # The openapi_specs configuration option has the filename including format in

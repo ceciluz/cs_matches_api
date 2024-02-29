@@ -56,9 +56,6 @@ ActiveRecord::Schema.define(version: 20_240_226_192_508) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-<<<<<<<<< Temporary merge branch 1
   add_foreign_key 'matches', 'teams', column: 'team_away_id'
   add_foreign_key 'matches', 'teams', column: 'team_home_id'
-=========
->>>>>>>>> Temporary merge branch 2
 end
