@@ -1,4 +1,4 @@
-# require 'rails_helper'
+require 'rails_helper'
 
 # RSpec.describe "Matches", type: :request do
 #   describe 'POST #create' do
@@ -46,22 +46,19 @@ describe 'Matches API' do
                 deaths: { type: :integer },
                 headshots: { type: :integer }
               },
-              required: %w[player_id kills assists deaths headshots]
+              required: [ 'player_id', 'kills', 'assists', 'deaths', 'headshots' ]
             }
           }
         },
-        required: %w[team_home_score team_away_score team_home_id team_away_id
-                     player_performances_attributes]
+        required: [ 'team_home_score', 'team_away_score', 'team_home_id', 'team_away_id', 'player_performances_attributes' ]
       }
 
       response '201', 'match created' do
-        let(:match) do
-          { team_home_score: 2, team_away_score: 1, team_home_id: 1, team_away_id: 2,
-            player_performances_attributes:
-        [{ player_id: 1, kills: 5, assists: 2, deaths: 1, headshots: 3 }] }
-        end
+        let(:match) { { team_home_score: 2, team_away_score: 1, team_home_id: 1, team_away_id: 2,
+        player_performances_attributes:
+        [{ player_id: 1, kills: 5, assists: 2, deaths: 1, headshots: 3 }] } }
         run_test!
-        post '/matches', params: { match: }, as: :json
+        post '/matches', params: { match: match }, as: :json
       end
       response '422', 'invalid request' do
         let(:match) { { team_home_score: 'invalid' } }
