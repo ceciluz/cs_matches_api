@@ -32,7 +32,6 @@ group :development, :test do
   gem 'capybara', '>= 3.26'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec'
   gem 'rspec-core'
   gem 'rspec-rails'
