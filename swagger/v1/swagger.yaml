@@ -9,7 +9,7 @@ paths:
       summary: Creates a match
       tags:
       - Matches
-      description: test
+      description: Create a match betwwne two teams
       parameters: []
       responses:
         '201':
