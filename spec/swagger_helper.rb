@@ -31,7 +31,33 @@ RSpec.configure do |config|
             }
           }
         }
-      ]
+      ],
+      components: {
+        schemas: {
+          match: {
+            type: :object,
+        properties: {
+          team_home_score: { type: :integer, default: 0, example: 20, description:'test' },
+          team_away_score: { type: :integer, default: 0, example: 25 },
+          team_home_id: {  type: :integer, example: 1 },
+          team_away_id: {  type: :integer, example: 2 },
+          player_performances_attributes: {
+            type: :array,
+            items: {
+              type: :object,
+              properties: {
+                kills: { type: :integer, default: 0, example: 25 },
+                deaths: { type: :integer, default: 0, example: 20 },
+                assists: { type: :integer, default: 0, example: 20 },
+                headshots: { type: :integer, default: 0, example: 10 },
+                player_id: { type: :integer, example: 1 }
+              }
+            }
+          }
+        }
+          }
+        }
+      }
     }
   }
 
