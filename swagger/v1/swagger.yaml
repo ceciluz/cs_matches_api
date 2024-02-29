@@ -9,7 +9,7 @@ paths:
       summary: Creates a match
       tags:
       - Matches
-      description: Create a match betwwne two teams
+      description: Create a match between two teams
       parameters: []
       responses:
         '201':
@@ -21,6 +21,85 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/match"
+  "/players":
+    get:
+      summary: Retrieves all players
+      tags:
+      - Players
+      description: Retrieve all players
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: 'Create a player '
+      tags:
+      - Players
+      parameters: []
+      description: Creates player
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#components/schemas/player_params"
+  "/players/{id}":
+    get:
+      summary: Retrieves a player based on his id
+      tags:
+      - Players
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Retrieves a player based on his id
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+    patch:
+      summary: Updates a player information
+      tags:
+      - Players
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Updates a player based on his id
+      responses:
+        '200':
+          description: OK
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#components/schemas/player_params"
+    delete:
+      summary: Delete a player information
+      tags:
+      - Players
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Deletes a player information based on his id
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
 servers:
 - url: https://{defaultHost}
   variables:
@@ -70,3 +149,59 @@ components:
               player_id:
                 type: integer
                 example: 1
+    player_params:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Name
+        nickname:
+          type: string
+          example: Nickname
+        nationality:
+          type: string
+          example: Nationality
+        birth_date:
+          type: string
+          format: date
+          example: '2001-01-01'
+        team_id:
+          type: integer
+          example: 1
+    player_response:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Player Name
+        nickname:
+          type: string
+          example: Player Nickname
+        nationality:
+          type: string
+          example: Brazilian
+        birth_date:
+          type: string
+          format: date
+          example: '2006-01-01'
+        age:
+          type: integer
+          example: 18
+        team:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Team Name
+            country:
+              type: string
+              example: Brasil
+            region:
+              type: string
+              example: South America
