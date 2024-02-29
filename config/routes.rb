@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'teams/create'
+  get 'teams/update'
+  get 'teams/destroy'
+  get 'teams/index'
+  get 'teams/show'
   get 'players/create'
   get 'players/update'
   get 'players/destroy'
