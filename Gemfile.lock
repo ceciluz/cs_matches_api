@@ -276,7 +276,7 @@ DEPENDENCIES
   rails-controller-testing (~> 0.0.3)
   rspec
   rspec-core
-  rspec-rails
+  rspec-rails (~> 6.1.0)
   rswag
   selenium-webdriver
   shoulda-matchers (~> 6.0)

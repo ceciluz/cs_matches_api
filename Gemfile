@@ -35,7 +35,7 @@ group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec'
   gem 'rspec-core'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 6.1.0'
   gem 'rswag'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'

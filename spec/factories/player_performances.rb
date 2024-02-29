@@ -6,5 +6,7 @@ FactoryBot.define do
     assists { 1 }
     deaths { 1 }
     headshots { 1 }
+    player
+    match
   end
 end
