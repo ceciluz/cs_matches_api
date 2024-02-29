@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'swagger_helper'
 
@@ -43,7 +45,7 @@ RSpec.describe 'CS API', type: :request do
 
         response 200, 'OK' do
           let(:id) { 1 }
-          before { create(:player, id: id) }
+          before { create(:player, id:) }
           run_test!
         end
 
@@ -65,7 +67,7 @@ RSpec.describe 'CS API', type: :request do
 
         response 200, 'OK' do
           let(:id) { 1 }
-          before { create(:player, id: id) }
+          before { create(:player, id:) }
           let(:player) { { name: 'Jane Doe' } }
           run_test! do |response|
             data = JSON.parse(response.body)
@@ -75,7 +77,7 @@ RSpec.describe 'CS API', type: :request do
 
         response 422, 'Unprocessable Entity' do
           let(:id) { 0 }
-          before { create(:player, id: id) }
+          before { create(:player, id:) }
           let(:player) { { name: ' ' } }
           run_test!
         end
@@ -92,7 +94,7 @@ RSpec.describe 'CS API', type: :request do
 
         response 204, 'No Content' do
           let(:id) { 1 }
-          before { create(:player, id: id) }
+          before { create(:player, id:) }
           run_test!
         end
 
