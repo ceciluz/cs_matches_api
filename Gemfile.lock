@@ -93,6 +93,9 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     json-schema (4.1.1)
       addressable (>= 2.8)
     listen (3.9.0)
@@ -156,8 +159,6 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7.7)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (0.0.3)
-      rails (>= 4.2)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -266,13 +267,13 @@ DEPENDENCIES
   capybara (>= 3.26)
   factory_bot_rails
   faker
+  jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)
   rails (~> 6.1.7, >= 6.1.7.7)
-  rails-controller-testing (~> 0.0.3)
   rspec
   rspec-core
-  rspec-rails
+  rspec-rails (~> 6.1.0)
   rswag
   selenium-webdriver
   shoulda-matchers (~> 6.0)

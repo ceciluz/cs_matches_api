@@ -6,9 +6,9 @@ RSpec.describe Match, type: :model do
   subject(:match) { build(:match) }
 
   describe 'Associations' do
-    it { is_expected.to have_many(:players_performances) }
-    it { is_expected.to belong_to(:home_team) }
-    it { is_expected.to belong_to(:away_team) }
+    it { is_expected.to have_many(:player_performances) }
+    it { is_expected.to belong_to(:team_home) }
+    it { is_expected.to belong_to(:team_away) }
   end
 
   describe 'Validations' do
