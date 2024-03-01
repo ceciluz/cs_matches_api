@@ -88,8 +88,36 @@ RSpec.configure do |config|
             }
           },
 
+          team_params: {
+            type: :object,
+            properties: {
+              name: { type: :string, example: 'Name'},
+              country: { type: :string , example: 'Country'},
+              region: { type: :string, example: 'Continent' },
+            }
+          },
 
-
+          team_response: {
+            type: :object,
+             properties: {
+               id: { type: :integer, example: 1 },
+               name: { type: :string, example: ' Name' },
+               country: { type: :string, example: 'Country' },
+               region: { type: :string, example: 'Continent' },
+               players: {
+                 type: :array, items: {
+                   type: :object, properties: {
+                     id: { type: :integer, example: 1},
+                     name: { type: :string, example: ' Name' },
+                     nickname: { type: :string, example: ' Nickname' },
+                     nationality: { type: :string, example: 'Nationality' },
+                     birth_date: { type: :string, format: 'date', example: '2001-01-01'},
+                     age: { type: :integer, example: 18 }
+                    }
+                  }
+                }
+              }
+           },
         }
       }
     }
