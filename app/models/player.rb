@@ -2,12 +2,7 @@
 
 class Player < ApplicationRecord
   belongs_to :team
-
-  validates :name, presence: true
-  validates :nickname, presence: true
-  validates :nationality, presence: true
-  validates :birth_date, presence: true
-  validates :age, presence:true
+  validates :name, :nickname, :nationality, :birth_date, presence: true
   validate :minimum_age
 
   has_many :performances, class_name: 'PlayerPerformance', dependent: :destroy
