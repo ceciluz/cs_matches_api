@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Player, type: :model do
 
   describe 'Associations' do
-    it { is_expected.to have_many(:performances) }
+    it { is_expected.to have_many(:player_performances) }
     it { is_expected.to belong_to(:team) }
   end
 
