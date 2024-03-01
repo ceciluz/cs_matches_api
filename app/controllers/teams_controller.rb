@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:update, :destroy, :show]
+  before_action :set_team, only: %i[update destroy show]
 
   def create
     @team = Team.new(team_params)
@@ -38,7 +40,6 @@ class TeamsController < ApplicationController
   rescue StandardError => e
     render json: { error: e }, status: :not_found
   end
-
 
   def team_params
     params.require(:team).permit(:name, :country, :region)

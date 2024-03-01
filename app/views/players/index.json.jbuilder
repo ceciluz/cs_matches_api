@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.array! @players do |player|
   json.extract! player, :id, :name, :nickname, :nationality, :birth_date, :age
   json.age player.age

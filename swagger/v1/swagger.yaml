@@ -100,6 +100,87 @@ paths:
           description: No Content
         '404':
           description: Not Found
+  "/teams":
+    get:
+      summary: Shows all teams
+      tags:
+      - Teams
+      description: Shows all teams in database
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create teams
+      tags:
+      - Teams
+      parameters: []
+      description: Create a new team in database
+      responses:
+        '201':
+          description: Create
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/team_params"
+  "/teams/{id}":
+    get:
+      summary: Shows team
+      tags:
+      - Teams
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Shows team based on id
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+    patch:
+      summary: Update a team
+      tags:
+      - Teams
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Update a new team in database
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/team_params"
+    delete:
+      summary: Deletes a team
+      tags:
+      - Teams
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      description: Deletes a team based on its id
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
 servers:
 - url: https://{defaultHost}
   variables:
@@ -205,3 +286,54 @@ components:
             region:
               type: string
               example: South America
+    team_params:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Name
+        country:
+          type: string
+          example: Country
+        region:
+          type: string
+          example: Continent
+    team_response:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: " Name"
+        country:
+          type: string
+          example: Country
+        region:
+          type: string
+          example: Continent
+        players:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              name:
+                type: string
+                example: " Name"
+              nickname:
+                type: string
+                example: " Nickname"
+              nationality:
+                type: string
+                example: Nationality
+              birth_date:
+                type: string
+                format: date
+                example: '2001-01-01'
+              age:
+                type: integer
+                example: 18

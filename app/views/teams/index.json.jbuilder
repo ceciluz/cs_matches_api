@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.array! @teams do |team|
   json.extract! team, :id, :name, :country, :region
   json.players team.players do |player|
