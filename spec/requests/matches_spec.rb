@@ -9,7 +9,7 @@ RSpec.describe 'Counter Strike API', type: :request do
       tags 'Matches'
       consumes 'application/json'
       produces 'application/json'
-      description 'Create a match betwwne two teams'
+      description 'Create a match between two teams'
       parameter name: :match, in: :body, schema: { '$ref' => '#/components/schemas/match' }
 
       response 201, 'Created' do
