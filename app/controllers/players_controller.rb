@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[update destroy show]
 
@@ -38,6 +40,6 @@ class PlayersController < ApplicationController
   def set_player
     @player = Player.find(params[:id])
   rescue StandardError => e
-    return render json: {error: e}, status: :not_found
+    render json: { error: e }, status: :not_found
   end
 end
