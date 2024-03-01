@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Player, type: :model do
-  subject(:player) { build(:player) }
 
   describe 'Associations' do
     it { is_expected.to have_many(:performances) }
@@ -16,17 +15,16 @@ RSpec.describe Player, type: :model do
     it { is_expected.to validate_presence_of(:nationality) }
     it { is_expected.to validate_presence_of(:birth_date) }
 
-    context 'when player is over 18 years old' do
-      it 'is valid' do
-        player = build(:player, birth_date: Date.today - 19.years)
-        expect(player).to be_valid
-      end
-    end
+    context 'when validating age' do
 
-    context 'when player is less than 18 years old' do
-      it 'is not valid' do
-        player = build(:player, birth_date: Date.today - 10.years)
-        expect(player).not_to be_valid
+    let(:valid_player) { build(:player, birth_date: Date.today - 19.years) }
+    let(:invalid_player) { build(:player, birth_date: Date.today - 10.years) }
+
+      it 'is valid when player is over 18 years old' do
+        expect(valid_player).to be_valid
+      end
+      it 'is not valid when player is less than 18 years old' do
+        expect(invalid_player).not_to be_valid
       end
     end
   end
