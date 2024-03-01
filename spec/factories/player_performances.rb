@@ -2,11 +2,11 @@
 
 FactoryBot.define do
   factory :player_performance do
-    kills { 1 }
-    assists { 1 }
-    deaths { 1 }
-    headshots { 1 }
+    kills { Faker::Number.between(from: 0, to: 50) }
+    assists { Faker::Number.between(from: 0, to: 75) }
+    deaths { Faker::Number.between(from: 0, to: 30) }
+    headshots { Faker::Number.between(from: 0, to: 100) }
     player
-    match
+    match factory: :match
   end
 end
