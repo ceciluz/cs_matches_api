@@ -3,13 +3,10 @@
 class PlayerPerformance < ApplicationRecord
   after_initialize :set_default_values, if: :new_record?
 
-  validates :kills, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :assists, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :deaths, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :headshots, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
   belongs_to :player
   belongs_to :match
+
+  validates :kills, :assists, :deaths, :headshots, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   private
 
@@ -19,4 +16,6 @@ class PlayerPerformance < ApplicationRecord
     self.deaths ||= 0
     self.headshots ||= 0
   end
+
+
 end
